@@ -22,8 +22,8 @@ Local storage will be used to store a leaderboard of high scores. Players will b
 
 - [wireframe](https://wireframe.cc/cshdBf)
 - [colors](https://coolors.co/335c67-fff3b0-e09f3e-9e2a2b-540b0e)
-- [headings](https://fonts.google.com/specimen/Racing+Sans+One)
-- [body](https://fonts.google.com/specimen/Merriweather+Sans)
+- [headings](https://fonts.google.com/specimen/Racing+Sans+One): Racing Sans One
+- [body](https://fonts.google.com/specimen/Merriweather+Sans): Merriweather Sans
 
 ## Schedule
 
