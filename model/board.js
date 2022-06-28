@@ -5,7 +5,7 @@ import { Tile } from "./tile.js";
  */
 export class Board {
 	constructor() {
-		this.grid = [
+		this._grid = [
 			["9", " ", " ", "2", " ", " ", " ", "3", " ", " ", " ", "2", " ", " ", "9"],
 			[" ", "2", " ", " ", " ", "3", " ", " ", " ", "3", " ", " ", " ", "2", " "],
 			[" ", " ", "2", " ", " ", " ", "2", " ", "2", " ", " ", " ", "2", " ", " "],
@@ -22,7 +22,7 @@ export class Board {
 			[" ", "2", " ", " ", " ", "3", " ", " ", " ", "3", " ", " ", " ", "2", " "],
 			["9", " ", " ", "2", " ", " ", " ", "3", " ", " ", " ", "2", " ", " ", "9"],
 		];
-		this.tiles = [
+		this._tiles = [
 			new Tile("E", 12, 1),
 			new Tile("A", 9, 1),
 			new Tile("I", 9, 1),
@@ -50,6 +50,10 @@ export class Board {
 			new Tile("Q", 1, 10),
 			new Tile("Z", 1, 10),
 		];
-		this.score = 0;
+		this._score = 0;
+	}
+
+	get grid() {
+		return this._grid;
 	}
 }
