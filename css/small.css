@@ -23,7 +23,8 @@ h6 {
 	grid-template-columns: repeat(15, 30px);
 	grid-template-rows: repeat(15, 30px);
 	gap: 2px;
-	background-color: lightblue;
+	background-color: rgba(225, 230, 173, 0.3);
+	border-radius: 0.6em;
 }
 
 .gridItem {
@@ -34,4 +35,5 @@ h6 {
 	height: 30px;
 	background-color: darkslategray;
 	color: white;
+	border-radius: 0.6em;
 }
