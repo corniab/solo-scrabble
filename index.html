@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Solo Scrabble</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300&family=Racing+Sans+One&display=swap"
+			rel="stylesheet"
+		/>
+		<link rel="stylesheet" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css" />
+		<link rel="stylesheet" href="css/small.css" />
+	</head>
+	<body>
+		<header>
+			<h1>Solo Scrabble</h1>
+			<nav>
+				<ul id="navBar">
+					<li><a href="#">Home</a></li>
+					<li><a href="#">New Game</a></li>
+					<li><a href="#">Rules</a></li>
+				</ul>
+			</nav>
+		</header>
+		<main>
+			<section id="boardSection">
+				<div id="gameBoard"></div>
+			</section>
+			<section id="leaderBoardSection">
+				<h2>LeaderBoard</h2>
+				<table>
+					<thead>
+						<tr>
+							<th>Player Name</th>
+							<th>Score</th>
+						</tr>
+					</thead>
+					<tbody></tbody>
+				</table>
+			</section>
+			<section id="gameInfo">
+				<h2>Game Information</h2>
+				<ul>
+					<li>Current Score: <span id="currentScore"></span></li>
+					<li>Tiles Left: <span id="tilesLeft"></span></li>
+				</ul>
+			</section>
+			<section id="tilesSection">
+				<h2>Player Tiles</h2>
+				<div id="availableTiles"></div>
+			</section>
+		</main>
+		<footer></footer>
+
+		<script type="module" src="main.js"></script>
+	</body>
+</html>
