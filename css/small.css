@@ -25,6 +25,10 @@ main {
 	align-items: center;
 }
 
+#boardSection {
+	padding: 1em;
+}
+
 #gameBoard {
 	aspect-ratio: 1/1;
 }
