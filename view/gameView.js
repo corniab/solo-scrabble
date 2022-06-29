@@ -31,6 +31,11 @@ export class GameView {
 						gridItem.textContent = "DOUBLE LETTER SCORE";
 						gridItem.classList.add("doubleLetter");
 						break;
+					case "X":
+						const img = document.createElement("img");
+						img.setAttribute("src", "images/star.png");
+						gridItem.appendChild(img);
+						break;
 					default:
 						break;
 				}
