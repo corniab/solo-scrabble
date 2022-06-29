@@ -12,7 +12,28 @@ export class GameView {
 			row.forEach((item) => {
 				const gridItem = document.createElement("div");
 				gridItem.classList.add("gridItem");
-				gridItem.textContent = item;
+
+				// Add different background and textcontent for score tiles
+				switch (item) {
+					case "9":
+						gridItem.textContent = "TRIPLE WORD SCORE";
+						gridItem.classList.add("tripleWord");
+						break;
+					case "8":
+						gridItem.textContent = "DOUBLE WORD SCORE";
+						gridItem.classList.add("doubleWord");
+						break;
+					case "3":
+						gridItem.textContent = "TRIPLE LETTER SCORE";
+						gridItem.classList.add("tripleLetter");
+						break;
+					case "2":
+						gridItem.textContent = "DOUBLE LETTER SCORE";
+						gridItem.classList.add("doubleLetter");
+						break;
+					default:
+						break;
+				}
 
 				// Append Each item to grid.
 				this.boardDiv.appendChild(gridItem);

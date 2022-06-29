@@ -19,21 +19,48 @@ h6 {
 }
 
 #gameBoard {
+	position: relative;
 	display: grid;
-	grid-template-columns: repeat(15, 30px);
-	grid-template-rows: repeat(15, 30px);
+	grid-template-columns: repeat(15, 40px);
+	grid-template-rows: repeat(15, 40px);
 	gap: 2px;
-	background-color: rgba(225, 230, 173, 0.3);
-	border-radius: 0.6em;
+	background-color: rgba(255, 255, 255, 0.944);
+	border: 5px solid rgba(0, 0, 167, 0.464);
+	border-radius: 5px;
+}
+
+#gameBoard::before {
+	box-sizing: border-box;
+	content: "";
+	position: absolute;
+	border: solid 2px rgba(255, 255, 255, 0.944);
+	width: 100%;
+	height: 100%;
+	border-radius: 2px;
 }
 
 .gridItem {
+	font-family: "Open Sans", sans-serif;
 	display: flex;
-	justify-content: center;
 	align-items: center;
-	width: 30px;
-	height: 30px;
-	background-color: darkslategray;
-	color: white;
-	border-radius: 0.6em;
+	text-align: center;
+	background-color: rgba(0, 0, 167, 0.464);
+	color: black;
+	font-size: 0.5em;
+}
+
+.tripleWord {
+	background-color: rgba(255, 65, 65, 0.869);
+}
+
+.doubleWord {
+	background-color: rgba(255, 174, 202.9);
+}
+
+.tripleLetter {
+	background-color: rgba(118, 118, 255.9);
+}
+
+.doubleLetter {
+	background-color: rgba(195, 195, 253.9);
 }
