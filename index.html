@@ -13,6 +13,7 @@
 		/>
 		<link rel="stylesheet" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css" />
 		<link rel="stylesheet" href="css/small.css" />
+		<link rel="stylesheet" href="css/large.css" />
 	</head>
 	<body>
 		<header>
@@ -29,6 +30,14 @@
 			<section id="boardSection">
 				<div id="gameBoard"></div>
 			</section>
+			<section id="tilesSection">
+				<h2>Player Tiles</h2>
+				<div id="availableTiles"></div>
+				<ul>
+					<li>Current Score: <span id="currentScore"></span></li>
+					<li>Tiles Left: <span id="tilesLeft"></span></li>
+				</ul>
+			</section>
 			<section id="leaderBoardSection">
 				<h2>LeaderBoard</h2>
 				<table>
@@ -41,19 +50,8 @@
 					<tbody></tbody>
 				</table>
 			</section>
-			<section id="gameInfo">
-				<h2>Game Information</h2>
-				<ul>
-					<li>Current Score: <span id="currentScore"></span></li>
-					<li>Tiles Left: <span id="tilesLeft"></span></li>
-				</ul>
-			</section>
-			<section id="tilesSection">
-				<h2>Player Tiles</h2>
-				<div id="availableTiles"></div>
-			</section>
 		</main>
-		<footer></footer>
+		<footer>&copy;<span id="currentYear"></span> Ben Cornia</footer>
 
 		<script type="module" src="main.js"></script>
 	</body>
