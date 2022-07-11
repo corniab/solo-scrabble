@@ -4,9 +4,9 @@
 export class Tile {
 	/**
 	 * Creates a Tile.
-	 * @param {string} char
-	 * @param {number} count
-	 * @param {number} points
+	 * @param {string} char String representing the tile character(A-Z).
+	 * @param {number} count Represents the total available tiles of given character.
+	 * @param {number} points Represents the value in points of tile.
 	 */
 	constructor(char, count, points) {
 		this._char = char;
