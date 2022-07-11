@@ -91,3 +91,36 @@ main {
 .doubleLetter {
 	background-color: rgba(195, 195, 253, 0.9);
 }
+
+/*********************************TILE**************************************/
+#tilesSection {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+#availableTiles {
+	display: flex;
+	justify-content: space-around;
+	padding: 1em;
+	width: 50%;
+}
+.tileDiv {
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 40px;
+	width: 40px;
+	min-width: 8px;
+	background-color: red;
+}
+
+.tilePoints {
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	font-size: 0.8em;
+	padding: 0.1em;
+}
