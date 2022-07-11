@@ -1,14 +1,28 @@
 import { Board } from "../model/board.js";
 import { GameView } from "../view/gameView.js";
+import { Tiles } from "../model/tiles.js";
+import { Player } from "../model/player.js";
 
 /**
- * Game controller for handling user input.
+ * Game controller for directing play.
  */
 export class Game {
-	constructor() {
+	/**
+	 * Creates a new game.
+	 * @param {string} playerName
+	 */
+	constructor(playerName) {
 		this.board = new Board();
 		this.view = new GameView("gameBoard");
-		// this.tiles = new Tiles();
+		this.tiles = new Tiles();
+		this.player = new Player(playerName);
+	}
+
+	/**
+	 * Sets up a new game.
+	 */
+	setup() {
+		this.createBoard();
 	}
 
 	/**
@@ -17,8 +31,4 @@ export class Game {
 	createBoard() {
 		this.view.renderBoard(this.board.grid);
 	}
-
-	/**
-	 * Sends the tiles to the vies.
-	 */
 }
