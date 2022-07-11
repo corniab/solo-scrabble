@@ -1,3 +1,5 @@
+import { Tile } from "../model/tile.js";
+
 export class GameView {
 	constructor(boardId) {
 		this.boardDiv = document.getElementById(boardId);
@@ -47,6 +49,26 @@ export class GameView {
 				// Append Each item to grid.
 				this.boardDiv.appendChild(gridItem);
 			});
+		});
+	}
+
+	/**
+	 * Wraps the tile information in HTML and displays it on screen.
+	 * @param {Tile[]} tiles Array of tiles.
+	 */
+	renderTiles(tiles) {
+		// Get div for storing available tiles.
+		const availableTiles = document.getElementById("availableTiles");
+
+		// Create
+		tiles.forEach((tile) => {
+			const tileDiv = `
+			<div class="tileDiv">
+				<span class="tileChar">${tile.char}</span>
+				<span class="tilePoints">${tile.points}</span>
+			</div>
+			`;
+			availableTiles.innerHTML += tileDiv;
 		});
 	}
 }

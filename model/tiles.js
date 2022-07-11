@@ -55,7 +55,7 @@ export class Tiles {
 		this._tileCount--;
 
 		// Create a random index.
-		const randomIndex = Math.floor(Math.random() * this._tiles.length);
+		const randomIndex = Math.floor(Math.random() * this._availTiles.length);
 
 		// Get the count of the tile.
 		const charCount = this._availTiles[randomIndex].count;

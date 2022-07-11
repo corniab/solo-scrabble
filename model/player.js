@@ -10,13 +10,27 @@ export class Player {
 	 */
 	constructor(playerName) {
 		this.playerName = playerName;
-		this.tiles = [];
+		this._tiles = [];
 	}
 	/**
 	 * Gets a tile and adds to tiles array.
 	 * @param {Tile} tile
 	 */
 	getTile(tile) {
-		this.tiles.push(tile);
+		this._tiles.push(tile);
+	}
+
+	/**
+	 * Returns the length of the tiles array.
+	 */
+	get tileCount() {
+		return this._tiles.length;
+	}
+
+	/**
+	 * Returns array of player tiles.
+	 */
+	get tiles() {
+		return this._tiles;
 	}
 }
