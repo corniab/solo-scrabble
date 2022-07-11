@@ -25,11 +25,4 @@ export class Board {
 	get grid() {
 		return this._grid;
 	}
-
-	get tile() {
-		// Create array of tiles
-
-		// Gets a random tile and decrements the count
-		const randomIndex = Math.floor(Math.random() * this._tiles.length);
-	}
 }

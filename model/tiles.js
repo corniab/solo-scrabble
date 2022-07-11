@@ -1,21 +1,13 @@
-/**
- * Represents a Scrabble Tile.
- * @param {string} char - character between A-Z
- * @param {number} count - distribution of characters
- * @param {number} points - point value of each character
- */
-class Tile {
-	constructor(char, count, points) {
-		this.char = char;
-		this.count = count;
-		this.points = points;
-	}
-}
+import { Tile } from "./tile.js";
+
 /**
  * Represents all the tiles available to the player at the start of the game.
- * Tracks when tiles are removed added to the pile.
+ * Tracks when tiles are removed/added to the pile.
  */
-class Tiles {
+export class Tiles {
+	/**
+	 * Create Tiles Class.
+	 */
 	constructor() {
 		this._tiles = [
 			new Tile("E", 12, 1),
@@ -46,7 +38,7 @@ class Tiles {
 			new Tile("Z", 1, 10),
 		];
 
-		// Create copy of array to store available tiles
+		// Create copy of array to store available tiles.
 		this._availTiles = Array.from(this._tiles);
 
 		// Take an initial count of all the tiles.
@@ -54,12 +46,33 @@ class Tiles {
 		this._score = 0;
 	}
 
-	get tile() {
-		// Decrement tile count
+	/**
+	 * Gets a random tile from the tile list.
+	 * @returns {Tile}
+	 */
+	getRandomTile() {
+		// Decrement tile count.
 		this._tileCount--;
 
-		// Gets a random tile and decrements the count
+		// Create a random index.
 		const randomIndex = Math.floor(Math.random() * this._tiles.length);
+
+		// Get the count of the tile.
+		const charCount = this._availTiles[randomIndex].count;
+
+		// Decrement count of tile
+		this._availTiles[randomIndex].decrementCount();
+
+		// Pull tile from list.
+		const randomTile = this._availTiles[randomIndex];
+
+		// Remove tile if count is 1.
+		if (charCount == 1) {
+			this._availTiles = this._availTiles.filter((tile) => tile.char != randomTile.char);
+		}
+
+		// Return the tile.
+		return randomTile;
 	}
 
 	/**
@@ -67,7 +80,7 @@ class Tiles {
 	 * Otherwise return falses.
 	 * @returns {boolean}
 	 */
-	tilesEmpty() {
+	get empty() {
 		if (this._tileCount > 1) {
 			return true;
 		}

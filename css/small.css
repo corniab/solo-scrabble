@@ -77,17 +77,17 @@ main {
 }
 
 .tripleWord {
-	background-color: rgba(255, 65, 65, 0.869);
+	background-color: rgba(255, 65, 65, 0.9);
 }
 
 .doubleWord {
-	background-color: rgba(255, 174, 202.9);
+	background-color: rgba(255, 174, 202, 0.9);
 }
 
 .tripleLetter {
-	background-color: rgba(118, 118, 255.9);
+	background-color: rgba(118, 118, 255, 0.9);
 }
 
 .doubleLetter {
-	background-color: rgba(195, 195, 253.9);
+	background-color: rgba(195, 195, 253, 0.9);
 }
