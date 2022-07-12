@@ -131,3 +131,7 @@ main {
 .tileChar {
 	margin: 10px;
 }
+
+.hideTile {
+	display: none;
+}

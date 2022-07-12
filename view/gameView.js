@@ -1,8 +1,15 @@
 import { Tile } from "../model/tile.js";
+import { addGridDrop, addTileDrag } from "./dragDrop.js";
 
+/**
+ * Class that creates the html elements for the user to interact with.
+ */
 export class GameView {
-	constructor(boardId) {
-		this.boardDiv = document.getElementById(boardId);
+	/**
+	 * Creates a new instance of GameView.
+	 */
+	constructor() {
+		this.boardDiv = document.getElementById("gameBoard");
 	}
 	/**
 	 * Renders the game board on the page.
@@ -46,6 +53,9 @@ export class GameView {
 				// Append gridText to gridItem
 				gridItem.appendChild(gridText);
 
+				// Add Drag Events.
+				addGridDrop(gridItem);
+
 				// Append Each item to grid.
 				this.boardDiv.appendChild(gridItem);
 			});
@@ -62,13 +72,36 @@ export class GameView {
 
 		// Create
 		tiles.forEach((tile) => {
-			const tileDiv = `
-			<div class="tileDiv">
-				<span class="tileChar">${tile.char}</span>
-				<span class="tilePoints">${tile.points}</span>
-			</div>
-			`;
-			availableTiles.innerHTML += tileDiv;
+			// Create tile div.
+			const tileDiv = document.createElement("div");
+			tileDiv.classList.add("tileDiv");
+
+			// Create span for tile character.
+			const tileChar = document.createElement("span");
+			tileChar.classList.add("tileChar");
+			tileChar.textContent = tile.char;
+
+			// Create span for tile points.
+			const tilePoints = document.createElement("tilePoints");
+			tilePoints.classList.add("tilePoints");
+			tilePoints.textContent = tile.points;
+
+			// Append character and points.
+			tileDiv.appendChild(tileChar);
+			tileDiv.appendChild(tilePoints);
+
+			// Make tile draggable.
+			tileDiv.setAttribute("draggable", true);
+
+			// Create unique ID.
+			tileDiv.setAttribute("id", tile.char + tile.count);
+			console.log(tileDiv.id);
+
+			// Add Drag Events to tile div.
+			addTileDrag(tileDiv);
+
+			// Append tile div to availableTiles.
+			availableTiles.appendChild(tileDiv);
 		});
 	}
 }

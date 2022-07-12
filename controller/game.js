@@ -14,7 +14,7 @@ export class Game {
 	 */
 	constructor(playerName) {
 		this.board = new Board();
-		this.view = new GameView("gameBoard");
+		this.view = new GameView();
 		this.tiles = new Tiles();
 		this.player = new Player(playerName);
 	}

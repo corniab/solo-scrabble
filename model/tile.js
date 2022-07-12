@@ -13,6 +13,14 @@ export class Tile {
 		this._count = count;
 		this._points = points;
 	}
+	/**
+	 * Creates a deep copy of the tile instance.
+	 * @param {Tile} other
+	 * @returns
+	 */
+	static clone(other) {
+		return new Tile(other.char, other.count, other.points);
+	}
 
 	/**
 	 * Returns the character.

@@ -44,6 +44,7 @@ export class Tiles {
 		// Take an initial count of all the tiles.
 		this._tileCount = this._availTiles.reduce((acc, tile) => acc + tile.count, 0);
 		this._score = 0;
+		console.log(this._tiles.length);
 	}
 
 	/**
@@ -57,14 +58,14 @@ export class Tiles {
 		// Create a random index.
 		const randomIndex = Math.floor(Math.random() * this._availTiles.length);
 
-		// Get the count of the tile.
+		// Get the current count of the tile.
 		const charCount = this._availTiles[randomIndex].count;
 
 		// Decrement count of tile
 		this._availTiles[randomIndex].decrementCount();
 
-		// Pull tile from list.
-		const randomTile = this._availTiles[randomIndex];
+		// Create a deep copy of the tile.
+		const randomTile = Tile.clone(this._availTiles[randomIndex]);
 
 		// Remove tile if count is 1.
 		if (charCount == 1) {
