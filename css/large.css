@@ -25,4 +25,8 @@
 	.gridText {
 		display: block;
 	}
+
+	.hide {
+		display: none;
+	}
 }

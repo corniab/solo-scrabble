@@ -95,7 +95,6 @@ export class GameView {
 
 			// Create unique ID.
 			tileDiv.setAttribute("id", tile.char + tile.count);
-			console.log(tileDiv.id);
 
 			// Add Drag Events to tile div.
 			addTileDrag(tileDiv);

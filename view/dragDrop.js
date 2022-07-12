@@ -19,68 +19,87 @@ export function addGridDrop(gridItem) {
 }
 
 /**
- * Callback function when element is dragged into boundary of cell.
+ * Remove all listeners on grid item.
+ * @param {HTMLElement} gridItem
+ */
+function removeGridDrop(gridItem) {
+	gridItem.removeEventListener("dragenter", dragEnter);
+	gridItem.removeEventListener("dragleave", dragLeave);
+	gridItem.removeEventListener("dragover", dragOver);
+	gridItem.removeEventListener("drop", drop);
+}
+
+/**
+ * Callback that fires when the user begins dragging an element.
+ * @param {Event} e
+ */
+function dragStart(e) {
+	// store id
+	e.dataTransfer.setData("text/plain", e.target.id);
+	setTimeout(() => {
+		e.target.classList.add("hide");
+	}, 0);
+}
+
+/**
+ * Callback that fires when the user stops dragging an element.
+ * @param {Event} e
+ */
+function dragEnd(e) {
+	e.target.classList.remove("hide");
+}
+
+/**
+ * Callback that fires when the user drags an element
+ * into the boundary of another element.
  * @param {Event} e
  */
 function dragEnter(e) {
+	e.preventDefault();
 	e.target.classList.add("dragOver");
+
+	// Hide childNodes.
+	e.target.childNodes[0].classList.add("hide");
 }
 
 /**
- * Callback function when element is dragged over boundary of cell.
+ * Callback that fires when the user drags over another element.
  * @param {Event} e
  */
 function dragOver(e) {
-	e.target.classList.add("dragOver");
+	console.log("over");
+	e.preventDefault();
+
+	// Add event listeners.
+	addGridDrop(e.target);
 }
 
 /**
- * Callback function when element is dragged out of boundary of cell.
+ * Callback that fires when the user leaves the boundary of an element.
  * @param {Event} e
  */
 function dragLeave(e) {
 	e.target.classList.remove("dragOver");
+
+	// Show childNodes.
+	e.target.childNodes[0].classList.remove("hide");
 }
 
 /**
- * Callback function when element is dropped into boundary of cell.
+ * Callback that fires when the user drops an element.
  * @param {Event} e
  */
 function drop(e) {
+	// Remove dragover class.
 	e.target.classList.remove("dragOver");
 
-	// Get draggable element.
+	// Get draggable element
 	const id = e.dataTransfer.getData("text/plain");
-
-	// CREATE A UNIQUE ID FOR DRAGGABLE ELEMENT
 	const draggable = document.getElementById(id);
 
 	// Add it to the drop target.
 	e.target.appendChild(draggable);
 
-	// Display new element.
-	draggable.classList.remove("hideTile");
-}
-
-/**
- * Callback that hides the tile after it is done dragging.
- * @param {Event} e
- */
-function dragEnd(e) {
-	setTimeout(() => {
-		e.target.classList.remove("hideTile");
-	}, 0);
-}
-
-/**
- * Callback for when the tile is dragged.
- * @param {Event} e
- */
-function dragStart(e) {
-	// NEED TO TRANSFER SOMETHING OTHER THAN ID
-	e.dataTransfer.setData("text/plain", e.target.id);
-	setTimeout(() => {
-		e.target.classList.add("hideTile");
-	}, 0);
-	e.target.style.cursor = "move";
+	// Remove drop listener
+	removeGridDrop(e.target);
 }

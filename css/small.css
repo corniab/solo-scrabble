@@ -50,6 +50,7 @@ main {
 }
 
 #gameBoard::after {
+	pointer-events: none;
 	content: "";
 	position: absolute;
 	border: solid 2px rgba(255, 255, 255, 0.9);
@@ -67,12 +68,16 @@ main {
 	background-color: rgba(158, 134, 0, 0.2);
 	color: rgb(0, 0, 0);
 	font-size: 0.5em;
+	transition: 0.2s;
 }
+
 .gridText {
+	pointer-events: none;
 	display: none;
 }
 
 .gridItem img {
+	pointer-events: none;
 	max-width: 100%;
 }
 
@@ -132,6 +137,12 @@ main {
 	margin: 10px;
 }
 
-.hideTile {
+/*********************************DRAG AND DROP**************************************/
+.hide {
 	display: none;
+}
+
+.dragOver {
+	transform: rotate(5deg) scale(1.1);
+	background-color: #540b0e;
 }
