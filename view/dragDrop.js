@@ -55,6 +55,7 @@ function dragEnd(e) {
  * @param {Event} e
  */
 function dragEnter(e) {
+	console.log(e.target.classList);
 	e.preventDefault();
 	e.target.classList.add("dragOver");
 
@@ -67,6 +68,7 @@ function dragEnter(e) {
  * @param {Event} e
  */
 function dragOver(e) {
+	console.log(e.target.classList);
 	console.log("over");
 	e.preventDefault();
 
@@ -79,6 +81,7 @@ function dragOver(e) {
  * @param {Event} e
  */
 function dragLeave(e) {
+	console.log(e.target.classList);
 	e.target.classList.remove("dragOver");
 
 	// Show childNodes.
@@ -90,6 +93,7 @@ function dragLeave(e) {
  * @param {Event} e
  */
 function drop(e) {
+	console.log(e.target.classList);
 	// Remove dragover class.
 	e.target.classList.remove("dragOver");
 
@@ -101,5 +105,5 @@ function drop(e) {
 	e.target.appendChild(draggable);
 
 	// Remove drop listener
-	removeGridDrop(e.target);
+	// removeGridDrop(e.target);
 }
