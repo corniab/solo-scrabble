@@ -103,7 +103,4 @@ function drop(e) {
 
 	// Add it to the drop target.
 	e.target.appendChild(draggable);
-
-	// Remove drop listener
-	// removeGridDrop(e.target);
 }

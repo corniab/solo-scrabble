@@ -1,7 +1,7 @@
 /**
  * Main Game Board for Scrabble.
  */
-export class Board {
+export class BoardModel {
 	constructor() {
 		this._grid = [
 			["9", " ", " ", "2", " ", " ", " ", "9", " ", " ", " ", "2", " ", " ", "9"],
@@ -25,4 +25,6 @@ export class Board {
 	get grid() {
 		return this._grid;
 	}
+
+	updateGrid(coordsArray) {}
 }

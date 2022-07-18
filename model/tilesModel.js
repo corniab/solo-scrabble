@@ -4,7 +4,7 @@ import { Tile } from "./tile.js";
  * Represents all the tiles available to the player at the start of the game.
  * Tracks when tiles are removed/added to the pile.
  */
-export class Tiles {
+export class TilesModel {
 	/**
 	 * Create Tiles Class.
 	 */

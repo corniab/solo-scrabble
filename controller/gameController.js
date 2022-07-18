@@ -1,19 +1,17 @@
-import { Board } from "../model/board.js";
-import { GameView } from "../view/gameView.js";
-import { Tiles } from "../model/tiles.js";
+import { Tiles } from "../model/tilesModel.js";
 import { Tile } from "../model/tile.js";
 import { Player } from "../model/player.js";
 
 /**
  * Game controller for directing play.
  */
-export class Game {
+export class GameController {
 	/**
 	 * Creates a new game.
 	 */
 	constructor() {
-		this.board = new Board();
-		this.view = new GameView();
+		this.boardModel = new BoardModel();
+		this.boardView = new BoardView();
 		this.tiles = new Tiles();
 		this.player = new Player("Ben");
 	}
