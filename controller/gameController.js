@@ -1,6 +1,7 @@
 import { TilesController } from "../controller/tilesController.js";
 import { BoardController } from "../controller/boardController.js";
 import { PlayerController } from "./playerController.js";
+import { DictionaryController } from "./dictionaryController.js";
 
 /**
  * Game controller for directing play.
