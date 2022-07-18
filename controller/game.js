@@ -10,13 +10,12 @@ import { Player } from "../model/player.js";
 export class Game {
 	/**
 	 * Creates a new game.
-	 * @param {string} playerName
 	 */
-	constructor(playerName) {
+	constructor() {
 		this.board = new Board();
 		this.view = new GameView();
 		this.tiles = new Tiles();
-		this.player = new Player(playerName);
+		this.player = new Player("Ben");
 	}
 
 	/**

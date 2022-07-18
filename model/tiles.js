@@ -9,7 +9,7 @@ export class Tiles {
 	 * Create Tiles Class.
 	 */
 	constructor() {
-		this._tiles = [
+		this._availTiles = [
 			new Tile("E", 12, 1),
 			new Tile("A", 9, 1),
 			new Tile("I", 9, 1),
@@ -37,9 +37,6 @@ export class Tiles {
 			new Tile("Q", 1, 10),
 			new Tile("Z", 1, 10),
 		];
-
-		// Create copy of array to store available tiles.
-		this._availTiles = Array.from(this._tiles);
 
 		// Take an initial count of all the tiles.
 		this._tileCount = this._availTiles.reduce((acc, tile) => acc + tile.count, 0);

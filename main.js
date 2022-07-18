@@ -1,4 +1,4 @@
 import { Game } from "./controller/game.js";
 import {} from "./modules/date.js";
-const game = new Game("Benjamin");
+const game = new Game();
 game.setup();
