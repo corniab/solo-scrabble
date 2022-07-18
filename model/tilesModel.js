@@ -1,4 +1,4 @@
-import { Tile } from "./tile.js";
+import { Tile } from "../modules/tile.js";
 
 /**
  * Represents all the tiles available to the player at the start of the game.
@@ -40,7 +40,9 @@ export class TilesModel {
 
 		// Take an initial count of all the tiles.
 		this._tileCount = this._availTiles.reduce((acc, tile) => acc + tile.count, 0);
-		this._score = 0;
+
+		// Create an array for player pool.
+		this._tilesInPlay = [];
 	}
 
 	/**
@@ -82,5 +84,13 @@ export class TilesModel {
 			return true;
 		}
 		return false;
+	}
+
+	getTilesInPlay() {
+		// Add tiles in play if empty.
+		while (this._tilesInPlay.length < 7) {
+			this._tilesInPlay.push(this.getRandomTile());
+		}
+		return this._tilesInPlay;
 	}
 }

@@ -1,6 +1,8 @@
+import { addGridDrop } from "../modules/dragDrop.js";
+
 export class BoardView {
 	/**
-	 * Creates a new instance of GameView.
+	 * Creates a new instance of BoardView.
 	 */
 	constructor() {
 		this.boardDiv = document.getElementById("gameBoard");

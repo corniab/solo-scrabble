@@ -6,4 +6,10 @@ export class BoardController {
 		this.view = new BoardView();
 		this.model = new BoardModel();
 	}
+
+	// Create the board.
+	createBoard() {
+		const grid = this.model.grid;
+		this.view.renderBoard(grid);
+	}
 }

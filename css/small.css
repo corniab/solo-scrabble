@@ -104,7 +104,7 @@ main {
 	align-items: center;
 }
 
-#availableTiles {
+#tilesInPlay {
 	display: flex;
 	flex-flow: wrap;
 	justify-content: space-around;

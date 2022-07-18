@@ -1,6 +1,6 @@
-import { Tiles } from "../model/tilesModel.js";
-import { Tile } from "../model/tile.js";
-import { Player } from "../model/player.js";
+import { TilesController } from "../controller/tilesController.js";
+import { BoardController } from "../controller/boardController.js";
+import { PlayerController } from "./playerController.js";
 
 /**
  * Game controller for directing play.
@@ -10,48 +10,14 @@ export class GameController {
 	 * Creates a new game.
 	 */
 	constructor() {
-		this.boardModel = new BoardModel();
-		this.boardView = new BoardView();
-		this.tiles = new Tiles();
-		this.player = new Player("Ben");
+		this.player = new PlayerController();
+		this.tiles = new TilesController();
+		this.board = new BoardController();
 	}
 
-	/**
-	 * Sets up a new game.
-	 */
 	setup() {
 		// Create the board.
-		this.createBoard();
-
-		// Get the player tiles.
-		this.getPlayerTiles();
-
-		// Send the tiles to the view.
-		this.createTiles(this.player.tiles);
-	}
-
-	/**
-	 * Sends the board grid values to the view.
-	 */
-	createBoard() {
-		this.view.renderBoard(this.board.grid);
-	}
-
-	/**
-	 * Send the player tiles.
-	 */
-	getPlayerTiles() {
-		while (this.player.tileCount < 7) {
-			const tile = this.tiles.getRandomTile();
-			this.player.getTile(tile);
-		}
-	}
-
-	/**
-	 * Sends the tile values to the view.
-	 * @param {Tile[]} tiles An array of tiles.
-	 */
-	createTiles(tiles) {
-		this.view.renderTiles(tiles);
+		this.board.createBoard();
+		this.tiles.createTiles();
 	}
 }
