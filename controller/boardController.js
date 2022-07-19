@@ -1,5 +1,6 @@
 import { BoardModel } from "../model/boardModel.js";
 import { BoardView } from "../view/boardView.js";
+import { buildWords } from "../modules/buildWord.js";
 
 export class BoardController {
 	constructor() {
@@ -53,5 +54,9 @@ export class BoardController {
 	/**
 	 * Creates a list of words on the board.
 	 */
-	getWords() {}
+	getWords() {
+		const charList = this.view.getWordGrid();
+		const wordList = buildWords(charList);
+		return wordList;
+	}
 }

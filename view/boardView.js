@@ -55,4 +55,19 @@ export class BoardView {
 		const playedTiles = Array.from(document.querySelectorAll(".gridItem > .initialMove"));
 		return playedTiles;
 	}
+
+	/**
+	 * Get all the words on the board.
+	 */
+	getWordGrid() {
+		const grid = Array.from(document.querySelectorAll(".gridItem"));
+		const tempGrid = grid.map((item) => {
+			let char = " ";
+			if (item.childNodes.length > 0) {
+				char = item.childNodes[0].childNodes[0].textContent;
+			}
+			return char;
+		});
+		return tempGrid;
+	}
 }
