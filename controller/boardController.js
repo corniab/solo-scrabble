@@ -59,4 +59,6 @@ export class BoardController {
 		const wordList = buildWords(charList);
 		return wordList;
 	}
+
+	updateScore() {}
 }
