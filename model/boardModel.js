@@ -56,8 +56,8 @@ export class BoardModel {
 				}
 				// Search the coordsPlayed array for a match.
 				else {
-					const match = this.coordsPlayed.filter((coord) => coord[0] == x && coord[1] == y);
-					if (match.length < 1) {
+					const match = this.coordsPlayed.some((coord) => coord[0] == x && coord[1] == y);
+					if (!match) {
 						return false;
 					}
 				}
@@ -74,8 +74,9 @@ export class BoardModel {
 				if (x == coordsArray[i][0]) {
 					continue;
 				} else {
-					const match = this.coordsPlayed.filter((coord) => coord[0] == x && coord[1] == y);
-					if (match.length < 1) {
+					// Search the coordsPlayed array for a match.
+					const match = this.coordsPlayed.some((coord) => coord[0] == x && coord[1] == y);
+					if (!match) {
 						return false;
 					}
 				}

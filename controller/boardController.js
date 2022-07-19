@@ -27,6 +27,11 @@ export class BoardController {
 
 		// Check if this is the first move.
 		if (this.model.coordsPlayed < 1) {
+			// Make sure at least two tiles are played.
+			if (coordsArray.length < 2) {
+				alert("Must play at least two tiles on first move!");
+				return false;
+			}
 			// Check if its valid.
 			if (!this.model.isValidFirstMove(coordsArray)) {
 				alert("First play must cross the center grid!");
