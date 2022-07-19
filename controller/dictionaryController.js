@@ -9,9 +9,14 @@ export class DictionaryController {
 	 * Checks if words are valid.
 	 * @param {string[]} wordList
 	 */
-	areRealWords(wordList) {
-		wordList.forEach((word) => {
-			const response = this.model.fetchWord(word);
+	async areRealWords(wordList) {
+		const results = await Promise.all(wordList.map((word) => this.model.fetchWord(word)));
+		results.forEach((result) => {
+			if (result[0] == false) {
+				alert(`${result[1]} is not a valid word.`);
+			}
 		});
+
+		return results.every((result) => result[0] == true);
 	}
 }

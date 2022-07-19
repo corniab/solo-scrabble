@@ -50,7 +50,7 @@ export class GameController {
 	 * Play continues until the player runs out of tiles.
 	 * Or they choose to quit.
 	 */
-	move() {
+	async move() {
 		// Check if we have a valid move.
 		if (!this.board.isValidMove()) {
 			return;
@@ -58,11 +58,10 @@ export class GameController {
 
 		// Get list of words on board.
 		const wordList = this.board.getWords();
-		console.log(wordList);
 
 		// Check for valid words.
-		// this.dictionary.areRealWords(wordList)
-		// 	.then(response => response.text());
+		const result = await this.dictionary.areRealWords(wordList);
+		console.log(result);
 	}
 
 	/**
