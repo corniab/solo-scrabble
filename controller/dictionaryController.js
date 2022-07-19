@@ -11,6 +11,7 @@ export class DictionaryController {
 	 */
 	async areRealWords(wordList) {
 		const results = await Promise.all(wordList.map((word) => this.model.fetchWord(word)));
+		console.log(results);
 		results.forEach((result) => {
 			if (result[0] == false) {
 				alert(`${result[1]} is not a valid word.`);

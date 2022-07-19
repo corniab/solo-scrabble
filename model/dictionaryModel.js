@@ -14,7 +14,7 @@ export class DictionaryModel {
 			word = word.toLowerCase();
 			// Check if the word is cached.
 			if (cache.has(word)) {
-				return cache.get(word);
+				return [true, cache.get(word)];
 			}
 			// Make a request for the word.
 			else {

@@ -52,7 +52,7 @@ export class GameController {
 	 */
 	async move() {
 		// Check if we have a valid move.
-		if (!this.board.isValidMove()) {
+		if (this.board.isValidMove() == false) {
 			return;
 		}
 
@@ -60,8 +60,14 @@ export class GameController {
 		const wordList = this.board.getWords();
 
 		// Check for valid words.
-		const result = await this.dictionary.areRealWords(wordList);
-		console.log(result);
+		if ((await this.dictionary.areRealWords(wordList)) == false) {
+			return;
+		}
+
+		// Update score.
+		this.board.updateScore();
+
+		// Update tiles.
 	}
 
 	/**
