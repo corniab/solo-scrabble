@@ -36,12 +36,55 @@ export class BoardModel {
 		this._coordsPlayed.push(coord);
 	}
 
+	isVertical(coordsArray) {}
+
 	/**
 	 * Checks if the current play is contiguous
 	 * vertically and horizontally.
 	 * @param {[][]} coordsArray
 	 */
-	isPlayContiguous(coordsArray) {}
+	isPlayContiguous(coordsArray) {
+		// Check if they all share the same x coordinate (i.e., vertical)
+		if (coordsArray.every((coord) => coordsArray[0][0] == coord[0])) {
+			// Get starting coordinate.
+			let [x, y] = coordsArray[0];
+			for (let i = 1; i < coordsArray.length; i++) {
+				// Check if the next coordinate is in the coords array.
+				y++;
+				if (y == coordsArray[i][1]) {
+					continue;
+				}
+				// Search the coordsPlayed array for a match.
+				else {
+					const match = this.coordsPlayed.filter((coord) => coord[0] == x && coord[1] == y);
+					if (match.length < 1) {
+						return false;
+					}
+				}
+			}
+			return true;
+		}
+		// Check if they all share the same y coordinate (i.e., horizontal)
+		else if (coordsArray.every((coord) => coordsArray[0][1] == coord[1])) {
+			// Get starting coordinate
+			let [x, y] = coordsArray[0];
+			for (let i = 1; i < coordsArray.length; i++) {
+				// Check if the next coordinate is in the coords array.
+				x++;
+				if (x == coordsArray[i][0]) {
+					continue;
+				} else {
+					const match = this.coordsPlayed.filter((coord) => coord[0] == x && coord[1] == y);
+					if (match.length < 1) {
+						return false;
+					}
+				}
+			}
+			return true;
+		}
+		// Coords are not on same path.
+		return false;
+	}
 
 	/**
 	 * Get the coords of the played tiles.

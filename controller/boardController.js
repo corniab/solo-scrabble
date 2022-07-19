@@ -24,12 +24,11 @@ export class BoardController {
 
 		// Get coords of tiles.
 		const coordsArray = this.model.getCoords(playedTiles);
-		console.log(coordsArray);
-		return;
+
 		// Check if they are contiguous.
-		if (!this.model.isPlayContiguous(coordsArray)) {
-			alert("move is not contiguous");
-		}
+		const result = this.model.isPlayContiguous(coordsArray);
+		console.log(result);
+		return;
 	}
 
 	isEmpty() {}
