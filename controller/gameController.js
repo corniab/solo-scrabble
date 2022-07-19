@@ -14,6 +14,7 @@ export class GameController {
 		this.player = new PlayerController();
 		this.tiles = new TilesController();
 		this.board = new BoardController();
+		this.dictionary = new DictionaryController();
 		this.quitBtn = document.getElementById("quitBtn");
 	}
 
@@ -29,7 +30,7 @@ export class GameController {
 	 * Quits the game and reloads the page.
 	 */
 	quit() {
-		let quitOk = confirm("Are you sure that you want to quit?");
+		let quitOk = confirm("Are you sure you want to quit?");
 		if (quitOk) {
 			location.reload();
 		}
@@ -49,7 +50,19 @@ export class GameController {
 	 * Play continues until the player runs out of tiles.
 	 * Or they choose to quit.
 	 */
-	move() {}
+	async move() {
+		// Check if we have a valid move.
+		if (!this.board.isValidMove()) {
+			return;
+		}
+
+		// Get list of words on board.
+		const wordList = this.board.getWords();
+
+		// Check for valid words.
+		// this.dictionary.areRealWords(wordList)
+		// 	.then(response => response.text());
+	}
 
 	/**
 	 * Adds event listener to move button.

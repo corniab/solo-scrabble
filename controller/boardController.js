@@ -7,9 +7,21 @@ export class BoardController {
 		this.model = new BoardModel();
 	}
 
-	// Create the board.
+	/**
+	 * Create the board.
+	 */
 	createBoard() {
 		const grid = this.model.grid;
 		this.view.renderBoard(grid);
 	}
+
+	/**
+	 * Validate the players move.
+	 */
+	isValidMove() {}
+
+	/**
+	 * Creates a list of words on the board.
+	 */
+	getWords() {}
 }

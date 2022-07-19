@@ -1,5 +1,7 @@
 export class DictionaryModel {
-	constructor() {}
+	constructor() {
+		this.fetchWord = this.memoizeFetch();
+	}
 	/**
 	 * Returns an anonymous function that memoizes fetch responses.
 	 */
@@ -26,11 +28,12 @@ export class DictionaryModel {
 					.then((data) => {
 						// Store the response in the cache.
 						cache.set(word, data);
-						console.log(data);
+						return true;
 					})
 					.catch((error) => {
 						if (error.message == "404") {
 							alert(word + " is not a real word. Sorry...");
+							return false;
 						}
 					});
 			}
