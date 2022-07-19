@@ -14,4 +14,8 @@ export class TilesController {
 		const tiles = this.model.getTilesInPlay();
 		this.view.renderTiles(tiles);
 	}
+
+	tilesEmpty() {
+		return this.model.empty;
+	}
 }

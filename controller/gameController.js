@@ -14,11 +14,45 @@ export class GameController {
 		this.player = new PlayerController();
 		this.tiles = new TilesController();
 		this.board = new BoardController();
+		this.quitBtn = document.getElementById("quitBtn");
 	}
 
 	setup() {
 		// Create the board.
 		this.board.createBoard();
 		this.tiles.createTiles();
+		this.addMoveListener();
+		this.addQuitListener();
+	}
+
+	/**
+	 * Quits the game and reloads the page.
+	 */
+	quit() {
+		location.reload();
+	}
+
+	/**
+	 * Called when the player clicks move move button.
+	 * Controls the game logic.
+	 */
+	move() {
+		console.log("move");
+	}
+
+	/**
+	 * Adds event listener to move button.
+	 */
+	addMoveListener() {
+		const moveBtn = document.getElementById("moveBtn");
+		moveBtn.addEventListener("click", this.move);
+	}
+
+	/**
+	 * Adds event listener to quit button.
+	 */
+	addQuitListener() {
+		const quitBtn = document.getElementById("quitBtn");
+		quitBtn.addEventListener("click", this.quit);
 	}
 }

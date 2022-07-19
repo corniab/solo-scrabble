@@ -75,12 +75,12 @@ export class TilesModel {
 	}
 
 	/**
-	 * Returns True if there are no available tiles.
-	 * Otherwise return falses.
+	 * Returns true if there are no available tiles.
+	 * Otherwise returns false.
 	 * @returns {boolean}
 	 */
 	get empty() {
-		if (this._tileCount > 1) {
+		if (this._tileCount < 1) {
 			return true;
 		}
 		return false;
