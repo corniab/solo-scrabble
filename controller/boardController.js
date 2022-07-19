@@ -20,15 +20,27 @@ export class BoardController {
 	 */
 	isValidMove() {
 		// Set tiles as played.
-		const playedTiles = this.view.setAsPlayed();
+		const playedTiles = this.view.setInitialMove();
 
 		// Get coords of tiles.
 		const coordsArray = this.model.getCoords(playedTiles);
 
+		// Check if this is the first move.
+		if (this.model.coordsPlayed < 1) {
+			// Check if its valid.
+			if (!this.model.isValidFirstMove(coordsArray)) {
+				alert("First play must cross the center grid!");
+				return false;
+			}
+		}
+
 		// Check if they are contiguous.
-		const result = this.model.isPlayContiguous(coordsArray);
-		console.log(result);
-		return;
+		if (!this.model.isPlayContiguous(coordsArray)) {
+			alert("Play must be vertically or horizontally contiguous!");
+			return false;
+		}
+
+		return true;
 	}
 
 	isEmpty() {}

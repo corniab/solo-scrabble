@@ -96,4 +96,14 @@ export class BoardModel {
 		});
 		return coords;
 	}
+
+	/**
+	 * Checks if the play is the first move.
+	 * @param {[][]} coordsArray
+	 */
+	isValidFirstMove(coordsArray) {
+		// Ensure that at least one of the tiles crosses the center grid.
+		const result = coordsArray.some((coord) => coord[0] == 7 && coord[1] == 7);
+		return result;
+	}
 }

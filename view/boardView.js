@@ -51,7 +51,7 @@ export class BoardView {
 	/**
 	 * Add class of intitialMove to tiles on the board.
 	 */
-	setAsPlayed() {
+	setInitialMove() {
 		const playedTiles = Array.from(document.querySelectorAll(".gridItem > .initialMove"));
 		return playedTiles;
 	}

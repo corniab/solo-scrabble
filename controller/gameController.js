@@ -52,7 +52,8 @@ export class GameController {
 	 */
 	move() {
 		// Check if we have a valid move.
-		this.board.isValidMove();
+		const result = this.board.isValidMove();
+		console.log(result);
 		return;
 
 		// Get list of words on board.
