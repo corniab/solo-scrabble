@@ -50,11 +50,10 @@ export class GameController {
 	 * Play continues until the player runs out of tiles.
 	 * Or they choose to quit.
 	 */
-	async move() {
+	move() {
 		// Check if we have a valid move.
-		if (!this.board.isValidMove()) {
-			return;
-		}
+		this.board.isValidMove();
+		return;
 
 		// Get list of words on board.
 		const wordList = this.board.getWords();
@@ -69,7 +68,7 @@ export class GameController {
 	 */
 	addMoveListener() {
 		const moveBtn = document.getElementById("moveBtn");
-		moveBtn.addEventListener("click", this.move);
+		moveBtn.addEventListener("click", this.move.bind(this));
 	}
 
 	/**

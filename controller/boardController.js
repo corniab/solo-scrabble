@@ -19,8 +19,20 @@ export class BoardController {
 	 * Validate the players move.
 	 */
 	isValidMove() {
-		// Make sure all there are no w
+		// Set tiles as played.
+		const playedTiles = this.view.setAsPlayed();
+
+		// Get coords of tiles.
+		const coordsArray = this.model.getCoords(playedTiles);
+		console.log(coordsArray);
+		return;
+		// Check if they are contiguous.
+		if (!this.model.isPlayContiguous(coordsArray)) {
+			alert("move is not contiguous");
+		}
 	}
+
+	isEmpty() {}
 
 	/**
 	 * Creates a list of words on the board.

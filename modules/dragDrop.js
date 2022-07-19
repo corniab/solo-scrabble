@@ -40,6 +40,9 @@ function dragStart(e) {
 
 	// Add back pointer events when you leave parent
 	e.target.parentNode.style.pointerEvents = "auto";
+
+	// Remove initial move class
+	e.target.classList.remove("initialMove");
 }
 
 /**
@@ -110,6 +113,7 @@ function drop(e) {
 	// Get draggable element
 	const id = e.dataTransfer.getData("text/plain");
 	const draggable = document.getElementById(id);
+	draggable.classList.add("initialMove");
 
 	// Add it to the drop target.
 	e.target.appendChild(draggable);
