@@ -19,17 +19,6 @@ export function addGridDrop(gridItem) {
 }
 
 /**
- * Remove all listeners on grid item.
- * @param {HTMLElement} gridItem
- */
-function removeGridDrop(gridItem) {
-	gridItem.removeEventListener("dragenter", dragEnter);
-	gridItem.removeEventListener("dragleave", dragLeave);
-	gridItem.removeEventListener("dragover", dragOver);
-	gridItem.removeEventListener("drop", drop);
-}
-
-/**
  * Callback that fires when the user begins dragging an element.
  * @param {Event} e
  */
@@ -39,6 +28,18 @@ function dragStart(e) {
 	setTimeout(() => {
 		e.target.classList.add("hide");
 	}, 0);
+
+	// Remove all pointer events for tiles during a drag.
+	const tiles = Array.from(document.querySelectorAll(".tileDiv"));
+
+	tiles.forEach((tile) => {
+		if (tile.id != e.target.id) {
+			tile.style.pointerEvents = "none";
+		}
+	});
+
+	// Add back pointer events when you leave parent
+	e.target.parentNode.style.pointerEvents = "auto";
 }
 
 /**
@@ -47,6 +48,13 @@ function dragStart(e) {
  */
 function dragEnd(e) {
 	e.target.classList.remove("hide");
+
+	// Add back all pointer events for tiles following a dragevent.
+	const tiles = Array.from(document.querySelectorAll(".tileDiv"));
+
+	tiles.forEach((tile) => {
+		tile.style.pointerEvents = "auto";
+	});
 }
 
 /**
@@ -55,11 +63,14 @@ function dragEnd(e) {
  * @param {Event} e
  */
 function dragEnter(e) {
-	e.preventDefault();
 	e.target.classList.add("dragOver");
 
 	// Hide childNodes.
-	e.target.childNodes[0].classList.add("hide");
+	for (const node of e.target.childNodes) {
+		if (node.classList == "gridText") {
+			node.classList.add("hide");
+		}
+	}
 }
 
 /**
@@ -68,9 +79,12 @@ function dragEnter(e) {
  */
 function dragOver(e) {
 	e.preventDefault();
-
-	// Add event listeners.
-	addGridDrop(e.target);
+	// Hide childNodes.
+	for (const node of e.target.childNodes) {
+		if (node.classList == "gridText") {
+			node.classList.add("hide");
+		}
+	}
 }
 
 /**
@@ -79,9 +93,6 @@ function dragOver(e) {
  */
 function dragLeave(e) {
 	e.target.classList.remove("dragOver");
-
-	// Show childNodes.
-	e.target.childNodes[0].classList.remove("hide");
 }
 
 /**
@@ -89,8 +100,12 @@ function dragLeave(e) {
  * @param {Event} e
  */
 function drop(e) {
+	e.preventDefault();
 	// Remove dragover class.
 	e.target.classList.remove("dragOver");
+	if (e.target.id != "tilesInPlay") {
+		e.target.style.pointerEvents = "none";
+	}
 
 	// Get draggable element
 	const id = e.dataTransfer.getData("text/plain");

@@ -18,7 +18,9 @@ export class BoardController {
 	/**
 	 * Validate the players move.
 	 */
-	isValidMove() {}
+	isValidMove() {
+		// Make sure all there are no w
+	}
 
 	/**
 	 * Creates a list of words on the board.

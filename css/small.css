@@ -71,14 +71,8 @@ main {
 	transition: 0.2s;
 }
 
-.gridText {
-	pointer-events: none;
-	display: none;
-}
-
-.gridItem img {
-	pointer-events: none;
-	max-width: 100%;
+.star {
+	background-color: rgb(77, 0, 77);
 }
 
 .tripleWord {
@@ -142,6 +136,5 @@ main {
 }
 
 .dragOver {
-	transform: rotate(5deg) scale(1.1);
 	background-color: #540b0e;
 }

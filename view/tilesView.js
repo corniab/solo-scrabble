@@ -1,4 +1,4 @@
-import { addTileDrag } from "../modules/dragDrop.js";
+import { addTileDrag, addGridDrop } from "../modules/dragDrop.js";
 
 export class TilesView {
 	/**
@@ -12,6 +12,7 @@ export class TilesView {
 	renderTiles(tiles) {
 		// Get div for storing available tiles.
 		const tilesInPlay = document.getElementById("tilesInPlay");
+		addGridDrop(tilesInPlay);
 
 		// Create
 		tiles.forEach((tile) => {
@@ -25,7 +26,7 @@ export class TilesView {
 			tileChar.textContent = tile.char;
 
 			// Create span for tile points.
-			const tilePoints = document.createElement("tilePoints");
+			const tilePoints = document.createElement("span");
 			tilePoints.classList.add("tilePoints");
 			tilePoints.textContent = tile.points;
 
