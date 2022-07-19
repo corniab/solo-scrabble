@@ -38,10 +38,18 @@ export class GameController {
 	/**
 	 * Called when the player clicks move move button.
 	 * Controls the game logic.
+	 * Consists of the following:
+	 *
+	 * Checks for invalid words
+	 *
+	 * Computes the score.
+	 *
+	 * Updates the players pool of tiles.
+	 *
+	 * Play continues until the player runs out of tiles.
+	 * Or they choose to quit.
 	 */
-	move() {
-		console.log("move");
-	}
+	move() {}
 
 	/**
 	 * Adds event listener to move button.
