@@ -29,7 +29,10 @@ export class GameController {
 	 * Quits the game and reloads the page.
 	 */
 	quit() {
-		location.reload();
+		let quitOk = confirm("Are you sure that you want to quit?");
+		if (quitOk) {
+			location.reload();
+		}
 	}
 
 	/**
