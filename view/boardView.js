@@ -32,7 +32,7 @@ export class BoardView {
 					case "2":
 						gridItem.classList.add("doubleLetter");
 						break;
-					case "X":
+					case "XC":
 						gridItem.classList.add("star");
 						break;
 					default:

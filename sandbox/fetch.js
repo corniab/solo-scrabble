@@ -99,3 +99,10 @@ function buildWords(board) {
 
 	return [wordsCoords, words];
 }
+
+let multipliers = [2, 3];
+
+let points = 10;
+
+points *= multipliers.reduce((a, b) => a * b, 1);
+console.log(points);

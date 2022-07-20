@@ -11,7 +11,7 @@ export class BoardModel {
 			[" ", " ", " ", " ", "8", " ", " ", " ", " ", " ", "8", " ", " ", " ", " "],
 			[" ", "3", " ", " ", " ", "3", " ", " ", " ", "3", " ", " ", " ", "3", " "],
 			[" ", " ", "2", " ", " ", " ", "2", " ", "2", " ", " ", " ", "2", " ", " "],
-			["9", " ", " ", "2", " ", " ", " ", "X", " ", " ", " ", "2", " ", " ", "9"],
+			["9", " ", " ", "2", " ", " ", " ", " ", " ", " ", " ", "2", " ", " ", "9"],
 			[" ", " ", "2", " ", " ", " ", "2", " ", "2", " ", " ", " ", "2", " ", " "],
 			[" ", "3", " ", " ", " ", "3", " ", " ", " ", "3", " ", " ", " ", "3", " "],
 			[" ", " ", " ", " ", "8", " ", " ", " ", " ", " ", "8", " ", " ", " ", " "],
@@ -22,6 +22,37 @@ export class BoardModel {
 		];
 
 		this._coordsPlayed = [];
+		this._pointsLookup = new Map(
+			Object.entries({
+				E: 1,
+				A: 1,
+				I: 1,
+				O: 1,
+				N: 1,
+				R: 1,
+				T: 1,
+				L: 1,
+				S: 1,
+				U: 1,
+				D: 2,
+				G: 2,
+				B: 3,
+				C: 3,
+				M: 3,
+				P: 3,
+				F: 4,
+				H: 4,
+				V: 4,
+				W: 4,
+				Y: 4,
+				K: 5,
+				J: 8,
+				X: 8,
+				Q: 10,
+				Z: 10,
+			})
+		);
+		this._score = 0;
 	}
 
 	get grid() {
@@ -106,5 +137,39 @@ export class BoardModel {
 		// Ensure that at least one of the tiles crosses the center grid.
 		const result = coordsArray.some((coord) => coord[0] == 7 && coord[1] == 7);
 		return result;
+	}
+
+	/**
+	 * Updates the score.
+	 * @param {object[]} wordsCoords
+	 */
+	updateScore(wordsCoords) {
+		// Loop through each word object.
+		for (let word of wordsCoords) {
+			let wordPoints = 0;
+			let multipliers = [];
+
+			// Look up the value of the grid using the coordinates of each character.
+			for (let [i, coords] of word.coords.entries) {
+				// Get the value of grid[y][x]
+				const cell = this._grid[coords[y]][coords[x]];
+				// Get the associated character string.
+				let char = word.chars[i];
+
+				// Calculate the points based upon the value of each grid cell.
+				switch (cell) {
+					// Double letter score.
+					case "2":
+						wordPoints += this._pointsLookup.get(char) * 2;
+						this._grid[coords[y]][coords[x]] = char;
+						break;
+
+					default:
+						break;
+				}
+			}
+			// Multiply word by multipliers.
+			wordPoints *= multipliers.reduce((a, b) => a * b, 1);
+		}
 	}
 }

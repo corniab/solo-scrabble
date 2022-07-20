@@ -49,8 +49,6 @@ export class BoardController {
 		return true;
 	}
 
-	isEmpty() {}
-
 	/**
 	 * Creates a list of words on the board.
 	 */
@@ -60,5 +58,11 @@ export class BoardController {
 		return wordList;
 	}
 
-	updateScore() {}
+	/**
+	 * Updates the score.
+	 * @param {object[]} wordsCoords
+	 */
+	updateScore(wordsCoords) {
+		this.model.updateScore(wordsCoords);
+	}
 }
