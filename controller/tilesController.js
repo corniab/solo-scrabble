@@ -18,4 +18,10 @@ export class TilesController {
 	tilesEmpty() {
 		return this.model.empty;
 	}
+
+	updateTilePool() {
+		const chars = this.view.getPlayed();
+		this.model.updateTilePool(chars);
+		this.createTiles();
+	}
 }

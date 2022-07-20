@@ -12,6 +12,8 @@ export class TilesView {
 	renderTiles(tiles) {
 		// Get div for storing available tiles.
 		const tilesInPlay = document.getElementById("tilesInPlay");
+		// Reset innerHTML.
+		tilesInPlay.innerHTML = "";
 		addGridDrop(tilesInPlay);
 
 		// Create
@@ -46,5 +48,13 @@ export class TilesView {
 			// Append tile div to availableTiles.
 			tilesInPlay.appendChild(tileDiv);
 		});
+	}
+
+	getPlayed() {
+		const played = Array.from(document.querySelectorAll(".gridItem > .initialMove"));
+		const chars = played.map((tile) => {
+			return tile.childNodes[0].textContent;
+		});
+		return chars;
 	}
 }

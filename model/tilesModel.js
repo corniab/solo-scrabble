@@ -93,4 +93,17 @@ export class TilesModel {
 		}
 		return this._tilesInPlay;
 	}
+
+	/**
+	 *
+	 * @param {string[]} chars
+	 */
+	updateTilePool(chars) {
+		for (let char of chars) {
+			let index = this._tilesInPlay.findIndex((tile) => tile.char == char);
+			if (index > -1) {
+				this._tilesInPlay.splice(index, 1);
+			}
+		}
+	}
 }

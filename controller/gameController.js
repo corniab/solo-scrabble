@@ -38,7 +38,7 @@ export class GameController {
 	}
 
 	/**
-	 * Called when the player clicks move move button.
+	 * Called when the player clicks move button.
 	 * Controls the game logic.
 	 * Consists of the following:
 	 *
@@ -71,8 +71,11 @@ export class GameController {
 		// Update score.
 		this.board.updateScore(wordsCoords);
 
+		// Update available tiles.
+		this.tiles.updateTilePool();
+
 		// Set tiles to played.
-		this.board.setToPlayed();
+		this.board.setToPlayed(wordsCoords);
 	}
 
 	/**
@@ -88,6 +91,6 @@ export class GameController {
 	 */
 	addQuitListener() {
 		const quitBtn = document.getElementById("quitBtn");
-		quitBtn.addEventListener("click", this.quit);
+		quitBtn.addEventListener("click", this.quit.bind(this));
 	}
 }

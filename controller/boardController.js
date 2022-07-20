@@ -77,8 +77,14 @@ export class BoardController {
 
 	/**
 	 * Updates played tiles so they cannot be moved.
+	 * @param {object[]} wordsCoords
 	 */
-	setToPlayed() {
+	setToPlayed(wordsCoords) {
 		this.view.setToPlayed();
+		wordsCoords.forEach((word) => {
+			word.coords.forEach((coord) => {
+				this.model.coordsPlayed = coord;
+			});
+		});
 	}
 }
