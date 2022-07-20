@@ -63,6 +63,22 @@ export class BoardController {
 	 * @param {object[]} wordsCoords
 	 */
 	updateScore(wordsCoords) {
-		this.model.updateScore(wordsCoords);
+		const score = this.model.updateScore(wordsCoords);
+		this.view.updateScore(score);
+	}
+
+	/**
+	 * Filter out the words that are already on the board.
+	 * @param {object[]} wordsCoords
+	 */
+	getNewWords(wordsCoords) {
+		return this.model.getNewWords(wordsCoords);
+	}
+
+	/**
+	 * Updates played tiles so they cannot be moved.
+	 */
+	setToPlayed() {
+		this.view.setToPlayed();
 	}
 }

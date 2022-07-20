@@ -70,4 +70,25 @@ export class BoardView {
 		});
 		return tempGrid;
 	}
+
+	/**
+	 * Update the score.
+	 * @param {number} score
+	 */
+	updateScore(score) {
+		document.getElementById("currentScore").textContent = score;
+	}
+
+	/**
+	 * Removes initialmove class and adds played.
+	 * Prevents tiles from being draggable.
+	 */
+	setToPlayed() {
+		const initialMove = Array.from(document.querySelectorAll(".gridItem > .initialMove"));
+		initialMove.forEach((node) => {
+			node.classList.replace("initialMove", "played");
+			node.style.pointerEvents = "none";
+			node.setAttribute("draggable", "false");
+		});
+	}
 }

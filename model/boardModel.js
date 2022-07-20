@@ -150,9 +150,9 @@ export class BoardModel {
 			let multipliers = [];
 
 			// Look up the value of the grid using the coordinates of each character.
-			for (let [i, coords] of word.coords.entries) {
+			for (let [i, coords] of word.coords.entries()) {
 				// Get the value of grid[y][x]
-				const cell = this._grid[coords[y]][coords[x]];
+				const cell = this._grid[coords[1]][coords[0]];
 				// Get the associated character string.
 				let char = word.chars[i];
 
@@ -161,15 +161,60 @@ export class BoardModel {
 					// Double letter score.
 					case "2":
 						wordPoints += this._pointsLookup.get(char) * 2;
-						this._grid[coords[y]][coords[x]] = char;
+						this._grid[coords[1]][coords[0]] = char;
 						break;
 
+					// Triple letter score.
+					case "3":
+						wordPoints += this._pointsLookup.get(char) * 3;
+						this._grid[coords[1]][coords[0]] = char;
+						break;
+
+					// Double word score.
+					case "8":
+						wordPoints += this._pointsLookup.get(char);
+						this._grid[coords[1]][coords[0]] = char;
+						multipliers.push(2);
+						break;
+
+					// Triple word score.
+					case "9":
+						wordPoints += this._pointsLookup.get(char);
+						this._grid[coords[1]][coords[0]] = char;
+						multipliers.push(3);
+						break;
+
+					// Empty Cell.
+					case " ":
+						wordPoints += this._pointsLookup.get(char);
+						this._grid[coords[1]][coords[0]] = char;
+						break;
+
+					// Already contains a value
 					default:
+						wordPoints += this._pointsLookup.get(char);
 						break;
 				}
 			}
 			// Multiply word by multipliers.
 			wordPoints *= multipliers.reduce((a, b) => a * b, 1);
+			// Update overall score.
+			this._score += wordPoints;
 		}
+		return this._score;
+	}
+
+	/**
+	 * Filter out the words that are already on the board.
+	 * @param {object[]} wordsCoords
+	 */
+	getNewWords(wordsCoords) {
+		return wordsCoords.filter((word) => {
+			return !word.chars.every((char, index) => {
+				let x = word.coords[index][0];
+				let y = word.coords[index][1];
+				return this._grid[y][x] == char;
+			});
+		});
 	}
 }

@@ -24,6 +24,7 @@ export class GameController {
 		this.tiles.createTiles();
 		this.addMoveListener();
 		this.addQuitListener();
+		this.board.view.updateScore(0);
 	}
 
 	/**
@@ -57,17 +58,21 @@ export class GameController {
 		}
 
 		// Get list of words on board.
-		const [wordsCoords, words] = this.board.getWords();
+		let [wordsCoords, words] = this.board.getWords();
 
 		// Check for valid words.
 		if ((await this.dictionary.areRealWords(words)) == false) {
 			return;
 		}
 
+		// Only update the score for newly formed words.
+		wordsCoords = this.board.getNewWords(wordsCoords);
+
 		// Update score.
 		this.board.updateScore(wordsCoords);
 
-		// Update tiles.
+		// Set tiles to played.
+		this.board.setToPlayed();
 	}
 
 	/**

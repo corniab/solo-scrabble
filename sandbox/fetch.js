@@ -105,4 +105,12 @@ let multipliers = [2, 3];
 let points = 10;
 
 points *= multipliers.reduce((a, b) => a * b, 1);
-console.log(points);
+
+const anArray = [1, 2, 3, 4, 5];
+
+console.log(
+	anArray.every((num, index) => {
+		console.log(index);
+		return num > 0;
+	})
+);
