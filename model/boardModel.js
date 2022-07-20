@@ -66,13 +66,9 @@ export class BoardModel {
 	set coordsPlayed(coord) {
 		this._coordsPlayed.push(coord);
 	}
-
-	isVertical(coordsArray) {}
-
 	/**
 	 * Checks if the current play is contiguous
 	 * vertically and horizontally.
-	 * @param {[][]} coordsArray
 	 */
 	isPlayContiguous(coordsArray) {
 		// Check if they all share the same x coordinate (i.e., vertical)
