@@ -57,15 +57,15 @@ export class GameController {
 		}
 
 		// Get list of words on board.
-		const wordList = this.board.getWords();
+		const [wordsCoords, words] = this.board.getWords();
 
 		// Check for valid words.
-		if ((await this.dictionary.areRealWords(wordList)) == false) {
+		if ((await this.dictionary.areRealWords(words)) == false) {
 			return;
 		}
 
 		// Update score.
-		this.board.updateScore();
+		this.board.updateScore(wordsCoords);
 
 		// Update tiles.
 	}
