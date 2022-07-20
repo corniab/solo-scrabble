@@ -14,80 +14,88 @@ const board = [
 ];
 
 /**
- * Combines the board array vertically and horizontally.
- * @param {Array} board
- * @returns {Array} A list of all the words on the board.
+ * Gets the horizontal words.
+ * @param {[][]} board
  */
-function getWords(board) {
-	// Get all the words horizontally.
+function getHorizWords(board) {
 	let horizWords = [];
-	for (const row of board) {
-		horizWords = horizWords.concat(row, [" "]);
+	for (const [y, row] of board.entries()) {
+		let rowObject = { chars: [], coords: [] };
+		for (const [x, col] of row.entries()) {
+			// If the col is blank create a new object.
+			if (col == " ") {
+				rowObject = { chars: [], coords: [] };
+				// Otherwise push the values to the object.
+			} else {
+				rowObject.chars.push(col);
+				rowObject.coords.push([x, y]);
+				// If the next col is blank push the object.
+				if (x < row.length) {
+					if (row[x + 1] == " ") {
+						horizWords.push(rowObject);
+					}
+				}
+				// Or if we have reached the end then push the object.
+				else if (x == row.length) {
+					horizWords.push(rowObject);
+				}
+			}
+		}
 	}
-
-	let vertWords = [];
-	// Add nth value of row to its own array.
-	for (let i = 0; i < board.length; i++) {
-		vertWords = vertWords.concat(
-			board.map((row) => row[i]),
-			[" "]
-		);
-	}
-
-	// Combine the two arrays.
-	const words = horizWords
-		.concat(vertWords)
-		.join("") // Join into a single string.
-		.trim() // Trim whitespace.
-		.split(/\s+/); // Split into array of words.
-
-	return words;
+	// Filter out single letters.
+	horizWords = horizWords.filter((word) => word.chars.length > 1);
+	return horizWords;
 }
-
-console.log(getWords(board));
 
 /**
- * Returns an anonymous function that memoizes fetch responses.
+ * Gets the vertical words.
+ * @param {[][]} board
  */
-function memoizeFetch() {
-	// Create a cache.
-	let cache = new Map();
-	// Return a closure.
-	return (word) => {
-		// Check if the word is cached.
-		if (cache.has(word)) {
-			return cache.get(word);
-		}
-		// Make a request for the word.
-		else {
-			fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${word}`)
-				.then((response) => {
-					if (response.ok) {
-						// The word is valid!
-						return response;
+function getVertWords(board) {
+	let vertWords = [];
+	for (let x = 0; x < board.length; x++) {
+		let rowObject = { chars: [], coords: [] };
+		for (let [y, row] of board.entries()) {
+			let col = row[x];
+			// If the col is blank create a new object.
+			if (col == " ") {
+				rowObject = { chars: [], coords: [] };
+				// Otherwise push the values to the object.
+			} else {
+				rowObject.chars.push(col);
+				rowObject.coords.push([x, y]);
+				// If the next row is blank push the object.
+				if (y < x) {
+					if (board[y + 1][x] == " ") {
+						vertWords.push(rowObject);
 					}
-					throw Error(response.status);
-				})
-				.then((response) => response.json())
-				.then((data) => {
-					// Store the response in the cache.
-					cache.set(word, data);
-					console.log(data);
-				})
-				.catch((error) => {
-					if (error.message == "404") {
-						alert(word + " is not a real word. Sorry...");
-					}
-				});
+				}
+				// Or if we have reached the end then push the object.
+				else if (y == x) {
+					vertWords.push(rowObject);
+				}
+			}
 		}
-	};
+	}
+	// Filter out single letters.
+	vertWords = vertWords.filter((word) => word.chars.length > 1);
+	console.log(vertWords);
+	return vertWords;
 }
 
-const fetchWord = memoizeFetch();
+/**
+ * Builds a list of words as well as a list of respective coordinates.
+ * @param {[]} board
+ */
+function buildWords(board) {
+	const vertWords = getVertWords(board);
+	const horizWords = gethorizWords(board);
 
-const form = document.forms.fetchForm;
-form.addEventListener("submit", (e) => {
-	e.preventDefault();
-	// Get word
-	fetchWord(form.fetchWord.value);
-});
+	const wordsCoords = vertWords.concat(horizWords);
+
+	const words = wordsCoords.map((word) => {
+		return "".join(word.chars);
+	});
+
+	return [wordsCoords, words];
+}
