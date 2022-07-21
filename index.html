@@ -20,16 +20,16 @@
 			<h1>Solo Scrabble</h1>
 			<nav>
 				<ul id="navBar">
-					<li><a href="#">Home</a></li>
-					<li><a href="#">New Game</a></li>
-					<li><a href="#">Rules</a></li>
+					<li><a href="/">Home</a></li>
+					<li><a href="/">New Game</a></li>
+					<li><a id="rules">Rules</a></li>
 				</ul>
 			</nav>
 		</header>
 		<main>
-			<section id="boardSection">
+			<div id="boardSection">
 				<div id="gameBoard"></div>
-			</section>
+			</div>
 			<section id="tilesSection">
 				<div>
 					<button id="quitBtn">Quit Game</button>
@@ -58,7 +58,6 @@
 		<footer>
 			<p>&copy;<span id="currentYear"></span> Ben Cornia</p>
 		</footer>
-
 		<script type="module" src="main.js"></script>
 	</body>
 </html>

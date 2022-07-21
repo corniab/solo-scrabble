@@ -17,6 +17,7 @@ h4,
 h5,
 h6 {
 	font-family: "Racing Sans One", cursive;
+	margin: 0.5em;
 }
 
 /*********************************HEADER**************************************/
@@ -63,7 +64,7 @@ nav ul li a {
 button {
 	position: relative;
 	background-color: #9e2a2b;
-	padding: 1em;
+	padding: 0.5em;
 	color: #fff3b0;
 	border: 2px solid rgb(51, 92, 103);
 	border-radius: 6px;
@@ -200,6 +201,11 @@ main {
 
 .played {
 	opacity: 0.8;
+}
+
+#tilesSection ul li {
+	list-style: none;
+	padding: 0;
 }
 
 /*********************************DRAG AND DROP**************************************/
