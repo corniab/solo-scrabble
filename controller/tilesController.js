@@ -24,4 +24,9 @@ export class TilesController {
 		this.model.updateTilePool(chars);
 		this.createTiles();
 	}
+
+	updateCount() {
+		const count = this.model._tileCount;
+		this.view.updateCount(count);
+	}
 }

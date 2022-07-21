@@ -57,4 +57,9 @@ export class TilesView {
 		});
 		return chars;
 	}
+
+	updateCount(count = 0) {
+		const tilesLeft = document.getElementById("tilesLeft");
+		tilesLeft.textContent = count;
+	}
 }

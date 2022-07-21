@@ -25,6 +25,7 @@ export class GameController {
 		this.addMoveListener();
 		this.addQuitListener();
 		this.board.view.updateScore(0);
+		this.tiles.updateCount();
 	}
 
 	/**
@@ -76,6 +77,9 @@ export class GameController {
 
 		// Set tiles to played.
 		this.board.setToPlayed(wordsCoords);
+
+		// Update count of tiles.
+		this.tiles.updateCount();
 	}
 
 	/**
