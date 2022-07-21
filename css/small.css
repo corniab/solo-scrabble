@@ -19,7 +19,77 @@ h6 {
 	font-family: "Racing Sans One", cursive;
 }
 
+/*********************************HEADER**************************************/
+header,
+footer {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background-color: rgb(51, 92, 103);
+	color: #fff3b0;
+}
+/*********************************NAV**************************************/
+nav {
+	width: 100%;
+	background-color: #9e2a2b;
+}
+
+nav ul {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	margin-block-end: 0;
+	margin-block-start: 0;
+	padding-inline-start: 0;
+}
+
+nav ul li a {
+	padding: 1em;
+	color: #fff3b0;
+	text-decoration: none;
+	display: block;
+	transition: 0.2s;
+}
+
+#navBar li a:hover {
+	background-color: #fff3b0;
+	color: #9e2a2b;
+}
+
+/*********************************BUTTON**************************************/
+button {
+	position: relative;
+	background-color: #9e2a2b;
+	padding: 1em;
+	color: #fff3b0;
+	border: 2px solid rgb(51, 92, 103);
+	border-radius: 6px;
+	transition: 0.2s;
+}
+
+button::after {
+	content: "";
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	border: 1px solid #fff3b0;
+	border-radius: 4px;
+}
+
+button:hover {
+	background-color: #fff3b0;
+	color: #9e2a2b;
+}
+
+/*********************************MAIN**************************************/
+
 main {
+	position: relative;
 	display: flex;
 	flex-direction: column;
 	align-items: center;

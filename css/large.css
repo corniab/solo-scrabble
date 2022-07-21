@@ -1,32 +1,15 @@
-@media only screen and (min-width: 850px) {
-	main {
-		display: grid;
-		grid-template-columns: minmax(300px, 4fr) 1fr;
-	}
-	#boardSection,
-	#leaderBoardSection,
-	#tilesSection {
-		justify-self: center;
-	}
-
-	/* grid-row-start / grid-column-start / grid-row-end / grid-column-end */
-	#boardSection {
-		grid-area: 1 / 1 / 4 / 2;
-	}
-
-	#leaderBoardSection {
-		grid-area: 1 / 2 / 2 / 3;
-	}
-
-	#tilesSection {
-		grid-area: 4 / 1 / 5 / 2;
-	}
-
+@media only screen and (min-width: 1000px) {
 	.gridText {
 		display: block;
 	}
 
 	.hide {
 		display: none;
+	}
+
+	#leaderBoardSection {
+		position: absolute;
+		top: 0;
+		right: 1em;
 	}
 }
